@@ -1,0 +1,238 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:transparent;color:#111;font-family:Arial,"Noto Sans TC",sans-serif}
+
+/* 全網頁動態平滑變色層 */
+.interactive-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #f5f2eb; 
+  transition: background-color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: -2; 
+}
+
+/* 作品圖片外殼與滑過放大特效 */
+.img-wrap {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #111;
+  border-radius: 18px;
+  background: #ddd;
+}
+.dark .img-wrap {
+  border-color: #f5f2eb;
+}
+.img-wrap img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.img-wrap:hover img {
+  transform: scale(1.05);
+}
+.zoomable {
+  cursor: zoom-in;
+}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:rgba(245,242,235,.82);backdrop-filter:blur(14px);border-bottom:1px solid #111}
+.brand{font-weight:900;letter-spacing:.08em}
+.nav a{color:#111;text-decoration:none;font-size:13px;font-weight:800}
+.nav nav{display:flex;gap:22px}
+
+/* Hero 首頁個人照排版 */
+.hero {
+  min-height: 100vh;
+  padding: 130px 28px 64px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+.hero h1{font-size:clamp(58px,13vw,180px);line-height:.82;margin:0 0 20px;letter-spacing:-.08em}
+.lead{font-size:clamp(18px,2vw,28px);max-width:780px;line-height:1.35}
+.eyebrow,.tag{font-size:13px;font-weight:900;letter-spacing:.16em;color:#e52521}
+
+.hero-card {
+  max-width: 380px;
+  justify-self: center;
+  border: 2px solid #111 !important;
+  border-radius: 24px !important;
+  box-shadow: 12px 12px 0 #111;
+  transform: rotate(2deg);
+  background: #fff;
+}
+.hero-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.section{padding:86px 28px;border-top:1px solid #111}
+.section h2{font-size:clamp(42px,7vw,104px);line-height:.9;margin:0 0 36px;letter-spacing:-.06em}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.panel{background:#fff;border:1px solid #111;border-radius:24px;padding:26px;min-height:220px}
+.panel h3,.project h3{font-size:30px;margin:0 0 12px}
+.panel p,.project p,.contact p{font-size:18px;line-height:1.7}
+.tools-panel{min-height:260px}
+.tool-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 10px}
+.tool-item{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 8px;background:#f5f2eb;border:1px solid #111;border-radius:18px}
+.tool-item img{width:58px;height:58px;object-fit:contain}
+.tool-item span{font-size:12px;font-weight:900;text-align:center;line-height:1.2}
+.tool-note{margin-top:12px!important;font-size:16px!important}
+.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end}
+.project{display:grid;grid-template-columns:.42fr .58fr;gap:28px;padding:42px 0;border-top:1px solid rgba(0,0,0,.28)}
+.project-copy{position:sticky;top:90px;align-self:start}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gallery .img-wrap:first-child{grid-column:1/-1;}
+.gallery img{aspect-ratio:16/10}
+.grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.grid4 img{aspect-ratio:1/1}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.grid2 img{aspect-ratio:16/9}
+.dark{background:rgba(17,17,17,0.95);color:#f5f2eb}
+.dark .project {border-color:rgba(255,255,255,.25)}
+.reverse .project-copy{order:2}
+.contact{text-align:center;background:#e52521;color:white}
+.contact .eyebrow{color:white}
+.contact h2{margin-bottom:14px}
+
+.contact-links {margin-top: 40px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;}
+.contact-btn {color: white; border: 2px solid white; padding: 12px 28px; text-decoration: none; font-weight: 800; font-size: 14px; letter-spacing: 0.1em; border-radius: 50px; transition: all 0.3s ease;}
+.contact-btn:hover {background: white; color: #e52521;}
+
+/* ==========================================
+   大尺寸滿版影片排版樣式 
+   ========================================== */
+.video-container { 
+  position: relative; 
+  width: 100%; 
+  padding-bottom: 56.25%; /* 完美的 16:9 比例 */
+  height: 0; 
+  border: 1px solid #f5f2eb; 
+  border-radius: 18px; 
+  overflow: hidden; 
+  background: #222; 
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.15);
+}
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+@media(max-width:860px){
+  .tool-icons{grid-template-columns:repeat(2,1fr)}
+  .nav{padding:14px 20px}
+  .nav nav{gap:14px}
+  .hero,.project{grid-template-columns:1fr}
+  .about-grid,.grid4,.grid2{grid-template-columns:1fr}
+  .section-head{display:block}
+  .project-copy{position:static}
+  .reverse .project-copy{order:0}
+  .hero h1{font-size:64px}
+  .hero-card { max-width: 280px; margin-top: 30px; }
+}
+
+/* 網頁滾動流暢進場動畫 */
+.project, .panel, .hero-card { opacity: 0; transform: translateY(34px); transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1); }
+.project.show, .panel.show { opacity: 1; transform: translateY(0); }
+.hero-card.show { opacity: 1; transform: translateY(0) rotate(2deg); }
+.hero-card.show:hover img { transform: scale(1.05); }
+
+/* YouTube 外部連結影片按鈕 */
+.video-link-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 360px;
+  background: linear-gradient(135deg, #111, #222);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.video-link-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.youtube-link {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 30px;
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.youtube-link:hover {
+  background: white;
+  color: black;
+  transform: translateY(-4px);
+}
+
+.play-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #ff0000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.youtube-link strong {
+  display: block;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.youtube-link small {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+
+.youtube-link:hover small {
+  color: rgba(0,0,0,0.65);
+}
+
+@media (max-width: 768px) {
+  .video-link-box {
+    min-height: 240px;
+  }
+
+  .youtube-link {
+    padding: 18px 22px;
+    gap: 12px;
+  }
+
+  .play-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .youtube-link strong {
+    font-size: 16px;
+  }
+
+  .youtube-link small {
+    font-size: 12px;
+  }
+}
