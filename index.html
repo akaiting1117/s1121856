@@ -64,22 +64,22 @@
 
       <div class="tool-icons" aria-label="擅長工具">
         <div class="tool-item">
-          <img src="assets/photoshop.svg" alt="Photoshop icon">
+          <img src="assets/photoshop.svg" alt="Photoshop icon" class="zoomable">
           <span>Photoshop</span>
         </div>
 
         <div class="tool-item">
-          <img src="assets/illustrator.svg" alt="Illustrator icon">
+          <img src="assets/illustrator.svg" alt="Illustrator icon" class="zoomable">
           <span>Illustrator</span>
         </div>
 
         <div class="tool-item">
-          <img src="assets/after-effects.svg" alt="After Effects icon">
+          <img src="assets/after-effects.svg" alt="After Effects icon" class="zoomable">
           <span>After Effects</span>
         </div>
 
         <div class="tool-item">
-          <img src="assets/indesign.svg" alt="InDesign icon">
+          <img src="assets/indesign.svg" alt="InDesign icon" class="zoomable">
           <span>InDesign</span>
         </div>
       </div>
@@ -262,26 +262,12 @@
 
 </main>
 
-<!-- 點擊圖片滿版放大的隱藏燈箱結構 -->
+<!-- 點擊圖片滿版放大的燈箱結構 -->
 <div class="lightbox-overlay" id="lightbox">
   <span class="lightbox-close">&times;</span>
   <img class="lightbox-img" src="" alt="Zoomed image">
 </div>
 
 <script src="script.js"></script>
-
-<script>
-/* 防止圖片破圖時整個版面爆掉 */
-document.querySelectorAll("img").forEach(function(img) {
-  img.addEventListener("error", function() {
-    const parent = img.closest(".img-wrap") || img.closest(".tool-item");
-    if (parent) {
-      parent.classList.add("missing-image");
-    }
-    img.style.display = "none";
-  });
-});
-</script>
-
 </body>
 </html>
